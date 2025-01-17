@@ -18,11 +18,17 @@ constructor(props: AppProps) {
     super(props);
 
     this.state = { fetching: false};
-    this.setState({ fetching: true });
+}
+
+componentDidUpdate(prevProps: AppProps): void {
+    if (!prevProps.todos.length && this.props.todos.length) {
+        this.setState({ fetching: false });
+    }
 }
 
     onButtonClick = (): void => {
         this.props.fetchTodos();
+        this.setState({ fetching: true });
     };
 
     onTodoClick = (id: number): void => {
@@ -41,10 +47,13 @@ constructor(props: AppProps) {
 
     render() {
         console.log(this.props.todos);
-        return <div>
-                  <button onClick={this.onButtonClick}>Fetch</button>
-                  {this.renderList()}
-               </div>;
+        return (
+            <div>
+                <button onClick={this.onButtonClick}>Fetch</button>
+                {this.state.fetching ? 'LOADING': null}
+                {this.renderList()}
+            </div>
+        );
     }
 }
 
