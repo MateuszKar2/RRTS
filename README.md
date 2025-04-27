@@ -1,4 +1,4 @@
-# RRTS
+ # RRTS
 
 **RRTS** (Real-Time Strategy) is a game or simulation that involves real-time resource management, strategic planning, and tactical gameplay. This project serves as a foundation for a real-time strategy game, focusing on building mechanics, combat systems, and resource allocation.
 
